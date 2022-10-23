@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Monitel.Rtdb.Api;
+using Ck = Monitel.Rtdb.Api;
 
 namespace ConsoleApp
 {
@@ -11,17 +11,22 @@ namespace ConsoleApp
     {
         static void Main(string[] args)
         {
-            using (Monitel.Rtdb.Api.IRtdbProvider provider = Monitel.Rtdb.Api.RtdbProvider.CreateProvider())
+            using (Ck.IRtdbProvider provider = Ck.RtdbProvider.CreateProvider())
             {
-                Monitel.Rtdb.Api.IRtdbProxy proxy;
-                var connectionString = "CK11-IA-3.pl03n/lcl";
+                Ck.IRtdbProxy proxy;
+                //var connectionString = "CK11-IA-3.pl03n.lcl";
+                var connectionString = "10.221.3.18";
+                
                 try
                 {
                     proxy = provider.Connect(connectionString);
+                    Console.WriteLine("GOOD");
+                    Console.ReadKey();
                 }
                 catch (Exception e)
                 {
                     Console.WriteLine(e.Message);
+                    Console.ReadKey();
                     return;
                 }
             }

@@ -6,3 +6,4 @@ C:\Users\stdAdmin.PL03N\source\repos\MasterThesis\ConsoleApp\bin\Debug\Monitel.R
 C:\Users\stdAdmin.PL03N\source\repos\MasterThesis\ConsoleApp\obj\Debug\ConsoleApp.csproj.CopyComplete
 C:\Users\stdAdmin.PL03N\source\repos\MasterThesis\ConsoleApp\obj\Debug\ConsoleApp.exe
 C:\Users\stdAdmin.PL03N\source\repos\MasterThesis\ConsoleApp\obj\Debug\ConsoleApp.pdb
+C:\Users\stdAdmin.PL03N\source\repos\MasterThesis\ConsoleApp\obj\Debug\ConsoleApp.csproj.AssemblyReference.cache
