@@ -14,8 +14,8 @@ namespace ConsoleApp
             using (Ck.IRtdbProvider provider = Ck.RtdbProvider.CreateProvider())
             {
                 Ck.IRtdbProxy proxy;
-                //var connectionString = "CK11-IA-3.pl03n.lcl";
-                var connectionString = "10.221.3.18";
+                
+                var connectionString = "10.221.3.18:900";
                 
                 try
                 {
@@ -29,7 +29,41 @@ namespace ConsoleApp
                     Console.ReadKey();
                     return;
                 }
+
+                var signalGuid = new Guid("F597F644-69E0-436B-96FD-82771BCBB0F0");
+                var uidsArray = new Guid[] { signalGuid };
+
+                var request = CreateValuesSliceRead(uidsArray);
+
+                using (var tracker = proxy.SendRequest(request))
+                {
+                    try
+                    {
+                        var response = tracker.WaitResponse();
+                        foreach (Ck.RtdbValue value in response.Values)
+                        {
+                            Console.WriteLine(value.Value);
+                            Console.WriteLine(value.Type);
+                            Console.WriteLine(value.Uid);
+                            Console.WriteLine(value.QualityCodes);
+                            Console.WriteLine(value.Time);
+                        }
+                        Console.ReadKey();
+                    }
+                    catch (Ck.RequestException e)
+                    {
+                        Console.WriteLine(e.Message);
+                    }
+                }
+
+                
+
             }
+        }
+
+        static Ck.Requests.ValuesSliceReadRequest CreateValuesSliceRead(Guid[] uids)
+        {
+            return new Ck.Requests.ValuesSliceReadRequest(uids, null);
         }
     }
 }
